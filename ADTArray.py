@@ -1,7 +1,7 @@
 class Array():
     def __init__( self, tamano ):
         self.__tamano = tamano
-        self.__data = [0 for x in range(self.__tamano)]
+        self.__data = [1 for x in range(self.__tamano)]
 
     def get_item( self, index ):
         return self.__data[ index ]
@@ -15,15 +15,19 @@ class Array():
     def getLenght( self ):
         contador = 0
         for i in self.__data:
-            contador = contador + 1
+            contador += 1
         return contador
     
-    
+    def setItem( self, dato, index ):
+        self.__data[ index ] = dato
+
 
 ejemplo = Array(5)
 
 ejemplo.to_string()
-ejemplo.get_item(3)
-ejemplo.clear(1)
+print(ejemplo.get_item(3))
+ejemplo.clear(2)
 ejemplo.to_string()
 print(ejemplo.getLenght())
+ejemplo.setItem( 3, 2 )
+ejemplo.to_string()
