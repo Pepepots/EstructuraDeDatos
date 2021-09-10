@@ -12,9 +12,18 @@ class Array():
     def clear ( self, dato ):
         self.__data = [dato for x in range(self.__tamano)]
 
+    def getLenght( self ):
+        contador = 0
+        for i in self.__data:
+            contador = contador + 1
+        return contador
+    
+    
+
 ejemplo = Array(5)
 
 ejemplo.to_string()
 ejemplo.get_item(3)
 ejemplo.clear(1)
 ejemplo.to_string()
+print(ejemplo.getLenght())
