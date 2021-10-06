@@ -13,14 +13,11 @@ class JuegoDeLaVidaADT:
             self.tablero.set_item( par[ 0 ], par[ 1 ], 'V' )
         self.corEnTablero()
     
-    
-    def to_string( self ):
-        print( f' --- GENERACION { self.gen } --- ')
+    def formato( self ):
         formato = self.tablero.get_info()
 
         for i in range( len(formato) ):
             row = formato[i]
-
             str = ''
             for i in range( len( row )):
                 if row[i] == '[' or row[i] == ']':
@@ -30,6 +27,14 @@ class JuegoDeLaVidaADT:
                 elif row[i] == 'V':
                     str = str + chalk.green( row[i] )
             print(str)
+
+    def to_string( self ):
+        print( f' --- GENERACION { self.gen } --- ')
+        for i in range( self.generaciones ):
+            self.formato()
+            self.aplicarReglas()
+
+        
 
     def get_vecinos(self, r, c):
         vecinos = []
@@ -95,20 +100,19 @@ class JuegoDeLaVidaADT:
 
 # juego1 = JuegoDeLaVidaADT( 5, 6, pob_in1, 5 )
 
-# for i in range( 5 ):
-#     juego1.to_string()
-#     juego1.aplicarReglas()
-
 # EXCEL
 
 pob_in2 = [(2,2),(3,1),(3,2),(3,3)]
 
 juego2 = JuegoDeLaVidaADT( 6, 6, pob_in2, 5 )
 
-for i in range( 5 ):
-    juego2.to_string()
-    juego2.aplicarReglas()
+juego2.to_string()
 
+# Prueba con otra rejilla
+
+# pob_in3 = [(2,2),(3,1),(3,2),(3,3)]
+
+# juego3 = JuegoDeLaVidaADT( 11, 11, pob_in3, 20 )
 
 # print('---------')
 # print(juego.vecinosVivos( 2, 1 ))
