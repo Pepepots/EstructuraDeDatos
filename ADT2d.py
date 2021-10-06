@@ -61,4 +61,4 @@ class ADTArray2D():
 
 # # arr.clear( Persona( 'Pepe' ) )
 # arr.clearCol( 0, None )
-# arr.to_string()
+# print(arr.get_info())

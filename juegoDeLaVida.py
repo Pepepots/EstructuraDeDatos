@@ -1,3 +1,4 @@
+from yachalk import chalk
 from ADT2d import ADTArray2D
 
 class JuegoDeLaVidaADT:
@@ -15,7 +16,20 @@ class JuegoDeLaVidaADT:
     
     def to_string( self ):
         print( f' --- GENERACION { self.gen } --- ')
-        self.tablero.to_string()
+        formato = self.tablero.get_info()
+
+        for i in range( len(formato) ):
+            row = formato[i]
+
+            str = ''
+            for i in range( len( row )):
+                if row[i] == '[' or row[i] == ']':
+                    str = str + chalk.blue( row[i] )
+                elif row[i] == "'" or row[i] == 'M':
+                    str = str + chalk.black( row[i] )
+                elif row[i] == 'V':
+                    str = str + chalk.green( row[i] )
+            print(str)
 
     def get_vecinos(self, r, c):
         vecinos = []
@@ -94,6 +108,7 @@ juego2 = JuegoDeLaVidaADT( 6, 6, pob_in2, 5 )
 for i in range( 5 ):
     juego2.to_string()
     juego2.aplicarReglas()
+
 
 # print('---------')
 # print(juego.vecinosVivos( 2, 1 ))
