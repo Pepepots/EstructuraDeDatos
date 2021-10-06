@@ -29,8 +29,8 @@ class JuegoDeLaVidaADT:
             print(str)
 
     def to_string( self ):
-        print( f' --- GENERACION { self.gen } --- ')
         for i in range( self.generaciones ):
+            print( f' --- GENERACION { self.gen } --- ')
             self.formato()
             self.aplicarReglas()
 
