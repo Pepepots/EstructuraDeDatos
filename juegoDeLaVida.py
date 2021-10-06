@@ -18,14 +18,12 @@ class JuegoDeLaVidaADT:
 
         for i in range( len(formato) ):
             row = formato[i]
-            str = ''
+            str = ' '
             for i in range( len( row )):
-                if row[i] == '[' or row[i] == ']':
-                    str = str + chalk.blue( row[i] )
-                elif row[i] == "'" or row[i] == 'M':
-                    str = str + chalk.black( row[i] )
+                if row[i] == 'M':
+                    str = str + chalk.black( row[i] ) + ' '
                 elif row[i] == 'V':
-                    str = str + chalk.green( row[i] )
+                    str = str + chalk.green( row[i] ) + ' '
             print(str)
 
     def to_string( self ):
