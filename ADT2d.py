@@ -17,7 +17,8 @@ class ADTArray2D():
         return self.__data
     
     def to_string( self ):
-        print( str(self.__data) )
+        for i in range( len(self.__data) ):
+            print( self.__data[i])
     
     def set_item( self, row, col, dato ):
         self.__data[row][col] = dato
@@ -35,23 +36,29 @@ class ADTArray2D():
         for i in range( len(self.__data) ):
             self.__data[i] = [dato for x in range(self.__col)]
 
+    def clearCol( self, col, dato ):
+        self.__data[col] = [dato for x in range(self.__col)]
 
-arr = ADTArray2D( 3, 4 )
 
-arr.set_item( 0, 0, Persona( 'Pepe' ) )
 
-# print( arr.get_info() )
-arr.to_string()
-print( arr.get_row_size() )
-print( arr.get_col_size() )
-print( arr.get_item( 2, 2 ) )
+# arr = ADTArray2D( 3, 4 )
 
-pepe = arr.get_item( 0, 0 )
-print( pepe.get_nombre() )
+# arr.set_item( 0, 0, Persona( 'Pepe' ) )
 
-arr.clear( 1 )
-arr.to_string()
+# # print( arr.get_info() )
+# arr.to_string()
+# print( arr.get_row_size() )
+# print( arr.get_col_size() )
+# print( arr.get_item( 2, 2 ) )
 
-# arr.clear( Persona( 'Pepe' ) )
-arr.clear( None )
-arr.to_string()
+# pepe = arr.get_item( 0, 0 )
+# print( pepe.get_nombre() )
+
+# arr.clear( 1 )
+# arr.to_string()
+
+# # print('Holi')
+
+# # arr.clear( Persona( 'Pepe' ) )
+# arr.clearCol( 0, None )
+# arr.to_string()
