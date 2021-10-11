@@ -77,7 +77,7 @@ class Empresa:
 
     def __init__( self ):
         # codigo para leer el archivo, podria ser un metodo local
-        txt = open('junio.dat','rt')
+        txt = open( 'junio.dat', 'r' )                 
         info = txt.readlines()
 
         for index in range( len(info) ):
