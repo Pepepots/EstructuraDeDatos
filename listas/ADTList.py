@@ -18,6 +18,7 @@ class LinkedListADT:
         if self.is_empty() :
             self.head = Nodo( dato )
         else:
+            #self.get_tail().next = Nodo(dato)
             tmp = self.get_tail()
             tmp.next = Nodo(dato)
 
@@ -40,10 +41,14 @@ class LinkedListADT:
         if curr_node != None:
             while curr_node.next != None:
                 if curr_node.next.data == dato:
+                    # print( curr_node.next.data)
                     if curr_node.next.next != None:
+                        # print( curr_node.next.next.data)
                         curr_node.next = curr_node.next.next 
+                        # return
                 else:
                     curr_node = curr_node.next 
+        # return curr_node.data
 
     def pop( self ):
         curr_node = self.head
@@ -54,5 +59,20 @@ class LinkedListADT:
     def prePop( self ):
         self.head = self.head.next
 
-
+prueba1 = LinkedListADT()
+prueba1.append( 0 )
+prueba1.append( 1 )
+prueba1.append( 2 )
+prueba1.append( 3 )
+prueba1.preAppend(-1)
+prueba1.transversal()
+prueba1.pop()
+print('------')
+prueba1.transversal()
+print('------')
+prueba1.prePop()
+prueba1.transversal()
+print('------')
+prueba1.remove( 1 )
+prueba1.transversal()
 
