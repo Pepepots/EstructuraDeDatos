@@ -120,6 +120,7 @@ class Empresa:
         # codigo para calcular al mas antiguo y mostrarlo en pantalla
         masAntiguo = 0
         nomEmpleado = ''
+        nomEmpleados = ''
 
         for i in range( self.empleados.getLenght() - 1):
             # print( i )
@@ -128,9 +129,15 @@ class Empresa:
             if emp.antiguedad() > masAntiguo:
                 masAntiguo = emp.antiguedad()
                 nomEmpleado = emp.get_nombre()
+                # print(nomEmpleado)
+                nomEmpleados = nomEmpleado
+            elif emp.antiguedad() == masAntiguo:
+                nomEmpleado = emp.get_nombre()
+                # print(nomEmpleado)
+                nomEmpleados = nomEmpleados + ' ' + nomEmpleado
         # print(masAntiguo)
         # print(nomEmpleado)
-        return nomEmpleado
+        return nomEmpleados
 
         
 

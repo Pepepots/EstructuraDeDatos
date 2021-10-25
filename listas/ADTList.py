@@ -1,4 +1,4 @@
-from Nodo import Nodo
+from Nodos import NodoSimple
 
 class LinkedListADT:
     def __init__( self ):
@@ -16,25 +16,24 @@ class LinkedListADT:
 
     def append( self , dato ):
         if self.is_empty() :
-            self.head = Nodo( dato )
+            self.head = NodoSimple( dato )
         else:
-            #self.get_tail().next = Nodo(dato)
-            tmp = self.get_tail()
-            tmp.next = Nodo(dato)
+            self.get_tail().next = NodoSimple(dato)
+            # tmp = self.get_tail()
+            # tmp.next = NodoSimple(dato)
 
     def preAppend( self, dato ):
         tmp = self.head
-        self.head = Nodo( dato, tmp )
+        self.head = NodoSimple( dato, tmp )
 
     def transversal( self ):
         curr_node = self.head
         while curr_node != None:
             if curr_node.next == None:
                 print( curr_node.data)
-                curr_node = curr_node.next
             else: 
                 print( curr_node.data , end=" --> ")
-                curr_node = curr_node.next
+            curr_node = curr_node.next
     
     def remove( self, dato ):
         curr_node = self.head

@@ -56,7 +56,11 @@ public class DoubleLinkedList {
         
         NodoDoble currNode = this.head;
         while ( currNode != null ) {            
-            System.err.print( currNode.data + " ---> " );
+            if ( currNode.next == null) {
+                System.out.print( currNode.data );
+            } else {
+                System.out.print( currNode.data + " ---> " );
+            }
             currNode = currNode.next;
         }
         System.out.println("");
@@ -68,5 +72,14 @@ public class DoubleLinkedList {
 //            
 //        }
 //    }
+    
+    
+
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
+    }
     
 }

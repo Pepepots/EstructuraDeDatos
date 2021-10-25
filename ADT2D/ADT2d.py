@@ -40,7 +40,6 @@ class ADTArray2D():
         self.__data[col] = [dato for x in range(self.__col)]
 
 
-
 # arr = ADTArray2D( 3, 4 )
 
 # arr.set_item( 0, 0, Persona( 'Pepe' ) )
