@@ -13,23 +13,30 @@ import ico.fes.unam.adts.DoubleLinkedList;
  * @author jose
  */
 public class ListasLigadas1358 {
+
     public static void main(String[] args) {
-        
+
         LinkedListADT lst = new LinkedListADT();
-        
-        lst.append(1);
-        lst.append(2);
-        lst.append(3);
-        lst.append(4);
-        lst.preAppend(0);
-        lst.transversal();
-        
-//        DoubleLinkedList ld = new DoubleLinkedList();
-//        
-//        ld.append(10);
-//        ld.append(20);
-//        ld.append(30);
-//        ld.transversal();
-        
+
+//        lst.append(1);
+//        lst.append(2);
+//        lst.append(3);
+//        lst.append(4);
+//        lst.preAppend(0);
+//        lst.transversal();
+        DoubleLinkedList ld = new DoubleLinkedList();
+
+        ld.append(10);
+        ld.append(20);
+        ld.append(30);
+        ld.append(40);
+        ld.append(30);
+        ld.append(50);
+//        ld.removeFromHead(50);
+        ld.removeFromHead(10);
+//        ld.removeFromTail(10);
+        ld.transversal();
+        ld.reverseTransversal();
+
     }
 }

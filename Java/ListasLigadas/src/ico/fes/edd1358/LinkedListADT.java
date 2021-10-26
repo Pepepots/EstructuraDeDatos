@@ -36,7 +36,7 @@ public class LinkedListADT {
         return this.head == null;
     }
 
-    public Nodo getTail() {
+    private Nodo getTail() {
         Nodo currNode = this.head;
         if ( !this.isEmpty() ) {
             while (currNode.next != null) {
