@@ -65,7 +65,7 @@ public class DoubleLinkedList {
         System.out.println("");
     }
 
-        public void reverseTransversal() {
+    public void reverseTransversal() {
         NodoDoble currNode = this.tail;
         while (currNode != null) {
             if (currNode.prev == null) {
@@ -77,7 +77,7 @@ public class DoubleLinkedList {
         }
         System.out.println("");
     }
-    
+
     public void removeFromHead(Object valor) {
         NodoDoble currNode = this.head;
         if (currNode.data == valor) {
@@ -130,7 +130,32 @@ public class DoubleLinkedList {
         this.size--;
     }
     
-    
+    public NodoDoble findFromHead( Object valor ){
+       NodoDoble currNode = this.head;
+        if (currNode.data == valor) {
+//            System.out.println("1");
+            this.head = currNode.next;
+            this.head.prev = null;
+        } else if (this.tail.data == valor) {
+//            System.out.println("2");
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            return this.tail;
+        } else {
+            while (currNode != null) {
+                if (currNode.data == valor) {
+                    NodoDoble nodoAnt = currNode.prev;
+                    NodoDoble nodoSig = currNode.next;
+
+                    nodoAnt.next = nodoSig;
+                    nodoSig.prev = nodoAnt;
+                    break;
+                }
+                currNode = currNode.next;
+            }
+        }
+        return currNode;
+    }
 
 //    public void head() {
 //        System.out.println(this.head.prev);
@@ -139,9 +164,6 @@ public class DoubleLinkedList {
 //    public void tail() {
 //        System.out.println(this.tail.data);
 //    }
-    /**
-     * @return the size
-     */
     public int getSize() {
         return size;
     }
