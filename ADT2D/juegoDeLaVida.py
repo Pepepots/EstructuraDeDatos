@@ -1,7 +1,7 @@
 from yachalk import chalk
 from ADT2d import ADTArray2D
 
-class JuegoDeLaVidaADT:
+class JuegoDeLaVida:
     def __init__( self, rens, cols, list_pob_in, generaciones ):
         self.tablero = ADTArray2D( rens, cols )
         self.generaciones = generaciones
@@ -102,7 +102,7 @@ class JuegoDeLaVidaADT:
 
 pob_in2 = [(2,2),(3,1),(3,2),(3,3)]
 
-juego2 = JuegoDeLaVidaADT( 6, 6, pob_in2, 5 )
+juego2 = JuegoDeLaVida( 6, 6, pob_in2, 10 )
 
 juego2.to_string()
 

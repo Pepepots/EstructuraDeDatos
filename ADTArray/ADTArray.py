@@ -169,18 +169,18 @@ class Empresa:
 
 
 
-# txt = open('junio.dat','rt')
-# info = txt.readlines()
+txt = open('junio.dat','rt')
+info = txt.readlines()
 
-# for index in range( len(info) ):
-    # info[index] = info[index].rstrip('\n').split(',')
+for index in range( len(info) ):
+    info[index] = info[index].rstrip('\n').split(',')
 
-# print(info)
+print(info)
 
-novelFractal = Empresa()
+# novelFractal = Empresa()
 
-print(novelFractal.encontrar_mayor_ant())
-novelFractal.calcular_sueldos()
+# print(novelFractal.encontrar_mayor_ant())
+# novelFractal.calcular_sueldos()
 
 # emp1 = novelFractal.get_empleado( 1 )
 
