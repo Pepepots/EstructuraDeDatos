@@ -169,11 +169,11 @@ class Empresa:
 
 
 
-txt = open('junio.dat','rt')
-info = txt.readlines()
+# txt = open('junio.dat','rt')
+# info = txt.readlines()
 
-for index in range( len(info) ):
-    info[index] = info[index].rstrip('\n').split(',')
+# for index in range( len(info) ):
+#     info[index] = info[index].rstrip('\n').split(',')
 
 print(info)
 
