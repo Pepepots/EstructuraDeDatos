@@ -1,4 +1,7 @@
-from Nodos import NodoSimple
+class NodoSimple:
+    def __init__(self, value, siguiente=None):
+        self.data = value
+        self.next = siguiente
 
 class listExamen:
     def __init__( self ):
