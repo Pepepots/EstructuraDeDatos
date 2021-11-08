@@ -55,11 +55,16 @@ class Laberinto:
             print(str)
         print('')
 
-    def esLimite(self,row,col):
-        if row >= 0 and col >= 0 and row < self.tablero.get_row_size() and col < self.tablero.get_col_size() :
+    def esLimite(self,cor):
+        if cor[ 0 ] >= 0 and cor[ 1 ] >= 0 and cor[ 0 ] < self.tablero.get_row_size() and cor[ 1 ] < self.tablero.get_col_size() :
             return True
         else:
             return False
+
+    def avanzar(self,cor):
+        self.tablero.set_item(cor[ 0 ], cor[ 1 ], 'V')
+        self.respuesta.push(cor)
+
     def encontrarCamino(self):
         cor = self.respuesta.peek()
         top = [cor[0]-1,cor[1]]
@@ -67,50 +72,101 @@ class Laberinto:
         bot = [cor[0]+1, cor[1]]
         rigth = [cor[0], cor[1]-1]
 
-        # print(top)
-        if self.esLimite( top[0], top[1] ):
-            # print('hoil')
-            estado = self.tablero.get_item( top[0], top[1] )
-            if estado == 'S':
+        estadoTop = None
+        estadoLeft = None
+        estadoBot = None
+        estadoRigth = None
+
+        if self.esLimite(top):
+            estadoTop = self.tablero.get_item( top[0], top[1])
+        
+        if self.esLimite(left):
+            estadoLeft = self.tablero.get_item( left[0], left[1])
+
+        if self.esLimite(bot):
+            estadoBot = self.tablero.get_item( bot[0], bot[1])
+
+        if self.esLimite(rigth):
+            estadoRigth = self.tablero.get_item( rigth[0], rigth[1])
+
+        if estadoTop == 'C' or estadoTop == 'S':
+            # print('Si estoy en top')
+            if estadoTop == 'S':
                 self.respuesta.push(top)
                 return
-            if estado == 'C':
-                self.tablero.set_item(top[ 0 ], top[ 1 ], 'V')
-                self.respuesta.push(top)
-                # self.encontrarCamino(estado)
-            elif self.esLimite( left[0], left[1] ) :
-                estado = self.tablero.get_item( left[0], left[1] )
-                if estado == 'S':
-                    self.respuesta.push(left)
-                    return
-                if estado == 'C':
-                    self.tablero.set_item(left[ 0 ], left[ 1 ], 'V')
-                    self.respuesta.push(left)
-                    # self.encontrarCamino(estado)
-                elif self.esLimite( bot[0], bot[1] ):
-                    estado = self.tablero.get_item( bot[0], bot[1] )
-                    if estado == 'S':
-                        self.respuesta.push(bot)
-                        # print('llegue a la solucion')
-                        return
-                    if estado == 'C':
-                        self.tablero.set_item(bot[ 0 ], bot[ 1 ], 'V')
-                        self.respuesta.push(bot)
-                        # self.encontrarCamino(estado)
-                    elif self.esLimite( rigth[0], rigth[1] ):
-                        print(rigth)
-                        estado = self.tablero.get_item( rigth[0], rigth[1] )
-                        if estado == 'S':
-                            self.respuesta.push(rigth)
-                            return
-                        if estado == 'C':
-                            self.tablero.set_item(rigth[ 0 ], rigth[ 1 ], 'V')
-                            self.respuesta.push(rigth)
-                            # self.encontrarCamino(estado)
-                        else:
-                            self.tablero.set_item( cor[ 0 ], cor[ 1 ], 'X')
-                            self.respuesta.pop()
-        self.formato()
+            if estadoTop == 'C':
+                self.avanzar(top)
+
+        elif estadoLeft == 'C' or estadoLeft == 'S':
+            if estadoLeft == 'S':
+                self.respuesta.push(left)
+                return
+            if estadoLeft == 'C':
+                self.avanzar(left)
+
+        elif estadoBot == 'C' or estadoBot == 'S':
+            if estadoBot == 'S':
+                self.respuesta.push(bot)
+                return
+            if estadoBot == 'C':
+                self.avanzar(bot)
+
+        elif estadoRigth == 'C' or estadoRigth == 'S':
+            # print(rigth)
+            if estadoRigth == 'S':
+                self.respuesta.push(rigth)
+                return
+            if estadoRigth == 'C':
+                # print('si avanzo')
+                self.avanzar(rigth)
+        else:
+            self.tablero.set_item( cor[ 0 ], cor[ 1 ], 'X')
+            self.respuesta.pop()
+
+        # print(top)
+        # if self.esLimite( top[0], top[1] ):
+        #     # print('hoil')
+        #     estado = self.tablero.get_item( top[0], top[1] )
+        #     if estado == 'S':
+        #         self.respuesta.push(top)
+        #         return
+        #     if estado == 'C':
+        #         self.tablero.set_item(top[ 0 ], top[ 1 ], 'V')
+        #         self.respuesta.push(top)
+        #         # self.encontrarCamino(estado)
+        #     elif self.esLimite( left[0], left[1] ) :
+        #         estado = self.tablero.get_item( left[0], left[1] )
+        #         if estado == 'S':
+        #             self.respuesta.push(left)
+        #             return
+        #         if estado == 'C':
+        #             self.tablero.set_item(left[ 0 ], left[ 1 ], 'V')
+        #             self.respuesta.push(left)
+        #             # self.encontrarCamino(estado)
+        #         elif self.esLimite( bot[0], bot[1] ):
+        #             estado = self.tablero.get_item( bot[0], bot[1] )
+        #             if estado == 'S':
+        #                 self.respuesta.push(bot)
+        #                 # print('llegue a la solucion')
+        #                 return
+        #             if estado == 'C':
+        #                 self.tablero.set_item(bot[ 0 ], bot[ 1 ], 'V')
+        #                 self.respuesta.push(bot)
+        #                 # self.encontrarCamino(estado)
+        #             elif self.esLimite( rigth[0], rigth[1] ):
+        #                 print(rigth)
+        #                 estado = self.tablero.get_item( rigth[0], rigth[1] )
+        #                 if estado == 'S':
+        #                     self.respuesta.push(rigth)
+        #                     return
+        #                 if estado == 'C':
+        #                     self.tablero.set_item(rigth[ 0 ], rigth[ 1 ], 'V')
+        #                     self.respuesta.push(rigth)
+        #                     # self.encontrarCamino(estado)
+        #                 else:
+        #                     self.tablero.set_item( cor[ 0 ], cor[ 1 ], 'X')
+        #                     self.respuesta.pop()
+        # self.formato()
         self.encontrarCamino()
         
 
@@ -134,23 +190,22 @@ prueba1 = Laberinto('entrada.txt')
 prueba1.formato()
 prueba1.encontrarCamino()
 prueba1.getRespuesta()
+prueba1.formato()
 
 print('------')
 prueba2 = Laberinto('entrada2.txt')
 prueba2.formato()
 prueba2.encontrarCamino()
-# prueba1.encontrarCamino()
-# prueba2.formato()
-# prueba2.encontrarCamino()
-# prueba2.formato()
-# prueba2.encontrarCamino()
-# prueba2.formato()
-# prueba2.encontrarCamino()
-# prueba2.formato()
-
 prueba2.getRespuesta()
-# prueba1.formato()
-# print( prueba1.getRespuesta().peek() )
+prueba2.formato()
+
+print('------')
+prueba3 = Laberinto('prueba3.txt')
+prueba3.formato()
+prueba3.encontrarCamino()
+prueba3.getRespuesta()
+prueba3.formato()
+
 
 # txt = open('entrada.txt','rt')
 # row = int(txt.readline())
