@@ -62,10 +62,10 @@ class Laberinto:
 
     def encontrarCamino(self):
         cor = self.respuesta.peek()
-        top = [cor[0]-1,cor[1]]
-        left = [cor[0], cor[1]+1]
-        bot = [cor[0]+1, cor[1]]
-        rigth = [cor[0], cor[1]-1]
+        arriba = [cor[0]-1,cor[1]]
+        derecha = [cor[0], cor[1]+1]
+        abajo = [cor[0]+1, cor[1]]
+        izquierda = [cor[0], cor[1]-1]
 
         estadoTop = None
         estadoLeft = None
@@ -74,49 +74,49 @@ class Laberinto:
 
         # Pregunta si es limite para definir su estado osea si es pared o no 
 
-        if self.esLimite(top):
-            estadoTop = self.tablero.get_item( top[0], top[1])
+        if self.esLimite(arriba):
+            estadoTop = self.tablero.get_item( arriba[0], arriba[1])
         
-        if self.esLimite(left):
-            estadoLeft = self.tablero.get_item( left[0], left[1])
+        if self.esLimite(derecha):
+            estadoLeft = self.tablero.get_item( derecha[0], derecha[1])
 
-        if self.esLimite(bot):
-            estadoBot = self.tablero.get_item( bot[0], bot[1])
+        if self.esLimite(abajo):
+            estadoBot = self.tablero.get_item( abajo[0], abajo[1])
 
-        if self.esLimite(rigth):
-            estadoRigth = self.tablero.get_item( rigth[0], rigth[1])
+        if self.esLimite(izquierda):
+            estadoRigth = self.tablero.get_item( izquierda[0], izquierda[1])
 
         # Hacemos la pregunta de donde avanzar si no puede avanzar en ningun lado se regresa una posicion 
 
         if estadoTop == 'C' or estadoTop == 'S':
             if estadoTop == 'S':
-                self.respuesta.push(top)
+                self.respuesta.push(arriba)
                 return
             if estadoTop == 'C':
-                self.avanzar(top)
+                self.avanzar(arriba)
 
         elif estadoLeft == 'C' or estadoLeft == 'S':
             if estadoLeft == 'S':
-                self.respuesta.push(left)
+                self.respuesta.push(derecha)
                 return
             if estadoLeft == 'C':
-                self.avanzar(left)
+                self.avanzar(derecha)
 
         elif estadoBot == 'C' or estadoBot == 'S':
             if estadoBot == 'S':
-                self.respuesta.push(bot)
+                self.respuesta.push(abajo)
                 return
             if estadoBot == 'C':
-                self.avanzar(bot)
+                self.avanzar(abajo)
 
         elif estadoRigth == 'C' or estadoRigth == 'S':
             # print(rigth)
             if estadoRigth == 'S':
-                self.respuesta.push(rigth)
+                self.respuesta.push(izquierda)
                 return
             if estadoRigth == 'C':
                 # print('si avanzo')
-                self.avanzar(rigth)
+                self.avanzar(izquierda)
         else:
             self.tablero.set_item( cor[ 0 ], cor[ 1 ], 'X')
             self.respuesta.pop()
