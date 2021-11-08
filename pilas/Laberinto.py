@@ -67,54 +67,54 @@ class Laberinto:
         abajo = [cor[0]+1, cor[1]]
         izquierda = [cor[0], cor[1]-1]
 
-        estadoTop = None
-        estadoLeft = None
-        estadoBot = None
-        estadoRigth = None
+        estadoArriba = None
+        estadoDerecha = None
+        estadoAbajo = None
+        estadoIzquierda = None
 
         # Pregunta si es limite para definir su estado osea si es pared o no 
 
         if self.esLimite(arriba):
-            estadoTop = self.tablero.get_item( arriba[0], arriba[1])
+            estadoArriba = self.tablero.get_item( arriba[0], arriba[1])
         
         if self.esLimite(derecha):
-            estadoLeft = self.tablero.get_item( derecha[0], derecha[1])
+            estadoDerecha = self.tablero.get_item( derecha[0], derecha[1])
 
         if self.esLimite(abajo):
-            estadoBot = self.tablero.get_item( abajo[0], abajo[1])
+            estadoAbajo = self.tablero.get_item( abajo[0], abajo[1])
 
         if self.esLimite(izquierda):
-            estadoRigth = self.tablero.get_item( izquierda[0], izquierda[1])
+            estadoIzquierda = self.tablero.get_item( izquierda[0], izquierda[1])
 
         # Hacemos la pregunta de donde avanzar si no puede avanzar en ningun lado se regresa una posicion 
 
-        if estadoTop == 'C' or estadoTop == 'S':
-            if estadoTop == 'S':
+        if estadoArriba == 'C' or estadoArriba == 'S':
+            if estadoArriba == 'S':
                 self.respuesta.push(arriba)
                 return
-            if estadoTop == 'C':
+            if estadoArriba == 'C':
                 self.avanzar(arriba)
 
-        elif estadoLeft == 'C' or estadoLeft == 'S':
-            if estadoLeft == 'S':
+        elif estadoDerecha == 'C' or estadoDerecha == 'S':
+            if estadoDerecha == 'S':
                 self.respuesta.push(derecha)
                 return
-            if estadoLeft == 'C':
+            if estadoDerecha == 'C':
                 self.avanzar(derecha)
 
-        elif estadoBot == 'C' or estadoBot == 'S':
-            if estadoBot == 'S':
+        elif estadoAbajo == 'C' or estadoAbajo == 'S':
+            if estadoAbajo == 'S':
                 self.respuesta.push(abajo)
                 return
-            if estadoBot == 'C':
+            if estadoAbajo == 'C':
                 self.avanzar(abajo)
 
-        elif estadoRigth == 'C' or estadoRigth == 'S':
+        elif estadoIzquierda == 'C' or estadoIzquierda == 'S':
             # print(rigth)
-            if estadoRigth == 'S':
+            if estadoIzquierda == 'S':
                 self.respuesta.push(izquierda)
                 return
-            if estadoRigth == 'C':
+            if estadoIzquierda == 'C':
                 # print('si avanzo')
                 self.avanzar(izquierda)
         else:
