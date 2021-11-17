@@ -1,6 +1,7 @@
 from yachalk import chalk
 from ADT2d import ADTArray2D
 from pilas import StackADT
+import time
 
 class Laberinto:
     def __init__( self, ruta ):
@@ -121,7 +122,8 @@ class Laberinto:
             self.tablero.set_item( cor[ 0 ], cor[ 1 ], 'X')
             self.respuesta.pop()
         
-        # self.formato()
+        self.formato()
+        time.sleep(1) 
         self.encontrarCamino()
 
     def getRespuesta( self ):
