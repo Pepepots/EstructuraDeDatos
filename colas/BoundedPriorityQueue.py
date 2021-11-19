@@ -13,23 +13,27 @@ class BoundedPriorityQueue:
 
     # Al ser un array aprobechamos sus prioridades de ordenamiento
     def enqueue(self, prioridad, dato):
-        self.__data[prioridad].enqueue(dato)
-        self.__size += 1
+        if prioridad >= 0 and prioridad < len(self.__data):
+            self.__data[prioridad].enqueue(dato)
+            self.__size += 1
 
     # Tenemos que ir recorriendo hasta encontrar uno no vacio para poder sacar de ahi 
     def dequeue(self):
         if not self.isEmpty():
             for nivel in self.__data:
                 if not nivel.isEmpty():
-                    nivel.dequeue()
                     self.__size -= 1
-                    break
+                    return nivel.dequeue()
+                    
 
     def toString(self):
-        for nivel in self.__data:
-            # print(nivel)
-            nivel.toString()
-        print('')
+        for nivel in range(len(self.__data)):
+            if self.__data[nivel].isEmpty():
+                print(f'{nivel}. {self.__data[nivel].getData()}', end='')
+                print('')
+            else:
+                print(f'{nivel}.', end='')
+                self.__data[nivel].toString()
             
 prueba1 = BoundedPriorityQueue(7)
 # print(prueba1.isEmpty())
@@ -46,8 +50,8 @@ prueba1.enqueue(5,'Capitan')
 prueba1.enqueue(4,'Timonel')
 prueba1.toString()
 
-# print('----------------')
+# # print('----------------')
 # while prueba1.length() != 0:
-#     prueba1.dequeue()
-#     prueba1.toString()
+#     print(prueba1.dequeue())
+#     # prueba1.toString()
 #     print('----------------')

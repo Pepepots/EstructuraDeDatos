@@ -20,9 +20,11 @@ class Queue:
             if dato == self.__data[self.length() - 1]:
                 print(f'| {dato} |')
             else:
-                print(f'| {dato} | <--', end = '')
-            
+                print(f'| {dato} | <--', end = '')        
         # print('')
+    
+    def getData(self):
+        return self.__data
 
 
 # prueba1 = Queue()
