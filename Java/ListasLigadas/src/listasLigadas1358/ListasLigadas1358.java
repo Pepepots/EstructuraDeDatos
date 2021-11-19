@@ -37,6 +37,9 @@ public class ListasLigadas1358 {
 //        ld.removeFromTail(10);
         ld.transversal();
         ld.reverseTransversal();
+        ld.findFromHead(30);
+        ld.transversal();
+
 
     }
 }

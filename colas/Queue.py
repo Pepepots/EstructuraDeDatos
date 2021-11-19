@@ -34,4 +34,4 @@ prueba1.toString()
 prueba1.dequeue()
 prueba1.toString()
 
-# print(prueba1.length())
+print(prueba1.length())

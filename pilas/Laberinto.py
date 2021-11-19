@@ -1,7 +1,10 @@
+import os
+import time
+import platform
 from yachalk import chalk
 from ADT2d import ADTArray2D
 from pilas import StackADT
-import time
+
 
 class Laberinto:
     def __init__( self, ruta ):
@@ -13,6 +16,8 @@ class Laberinto:
 
         self.respuesta = StackADT()
         self.buscarEntrada()
+        self.formato()
+        self.limpiar()
 
     def buscarEntrada( self ):
         for r in range(self.row):
@@ -41,6 +46,7 @@ class Laberinto:
             valido =  chalk.green
             salida = chalk.red_bright
             invalido = chalk.red
+
             for i in range( len( row )):
                 if row[i] == 'P':
                     print(pared(row[i]), end=' ')
@@ -71,7 +77,14 @@ class Laberinto:
         self.tablero.set_item(cor[ 0 ], cor[ 1 ], 'V')
         self.respuesta.push(cor)
 
+    def limpiar(self):
+        if platform.system() == "Windows":
+            self.clear = 'cls' 
+        else:
+            self.clear = 'clear'
+
     def encontrarCamino(self):
+        os.system(self.clear)
         cor = self.respuesta.peek()
         arriba = [cor[0]-1,cor[1]]
         derecha = [cor[0], cor[1]+1]
@@ -133,7 +146,8 @@ class Laberinto:
             self.respuesta.pop()
         
         self.formato()
-        time.sleep(1) 
+        time.sleep(.8)
+
         self.encontrarCamino()
 
     def getRespuesta( self ):
@@ -141,29 +155,29 @@ class Laberinto:
     
 
 prueba1 = Laberinto('entrada.txt')
-prueba1.formato()
+# prueba1.formato()
 prueba1.encontrarCamino()
-prueba1.formato()
+# prueba1.formato()
 prueba1.getRespuesta()
 
 print('------------------------------------------------------')
 prueba2 = Laberinto('entrada2.txt')
-prueba2.formato()
+# prueba2.formato()
 prueba2.encontrarCamino()
-prueba2.formato()
+# prueba2.formato()
 prueba2.getRespuesta()
 
 print('------------------------------------------------------')
 prueba3 = Laberinto('prueba3.txt')
-prueba3.formato()
+# prueba3.formato()
 prueba3.encontrarCamino()
-prueba3.formato()
+# prueba3.formato()
 prueba3.getRespuesta()
 
 print('------------------------------------------------------')
 prueba4 = Laberinto('rebuscado.txt')
-prueba4.formato()
+# prueba4.formato()
 prueba4.encontrarCamino()
-prueba4.formato()
+# prueba4.formato()
 prueba4.getRespuesta()
 
