@@ -36,19 +36,29 @@ class Laberinto:
 
         for i in range( len(formato) ):
             row = formato[i]
-            str = ' '
+            pared = chalk.black
+            entrada = chalk.green_bright
+            valido =  chalk.green
+            salida = chalk.red_bright
+            invalido = chalk.red
             for i in range( len( row )):
                 if row[i] == 'P':
-                    str = str + chalk.black( row[i] ) + ' '
-                elif row[i] == 'E' or row[i] == 'V':
-                    str = str + chalk.green( row[i] ) + ' '
+                    print(pared(row[i]), end=' ')
+                elif row[i] == 'E':
+                    print(entrada(row[i]), end=' ')
+                    # str = str + chalk.green( row[i] ) + ' '
+                elif row[i] == 'V':
+                    print(valido(row[i]), end=' ')
                 elif row[i] == 'S':
-                    str = str + chalk.red( row[i] ) + ' '
+                    print(salida(row[i]), end=' ')
+                    # str = str + chalk.red( row[i] ) + ' '
                 elif row[i] == 'X':
-                    str = str + chalk.red( row[i] ) + ' '
+                    print(invalido(row[i]), end=' ')
+                    # str = str + chalk.red( row[i] ) + ' '
                 elif row[i] == 'C':
-                    str = str + row[i] + ' '
-            print(str)
+                    print(row[i], end=' ')
+                    # str = str + row[i] + ' '
+            print('')
         print('')
 
     def esLimite(self,cor):
