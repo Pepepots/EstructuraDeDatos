@@ -22,16 +22,16 @@ class Queue:
             else:
                 print(f'| {dato} | <--', end = '')
             
-        print('')
+        # print('')
 
 
-prueba1 = Queue()
-prueba1.enqueue(1)
-prueba1.enqueue(2)
-prueba1.enqueue(3)
-prueba1.enqueue(4)
-prueba1.toString()
-prueba1.dequeue()
-prueba1.toString()
+# prueba1 = Queue()
+# prueba1.enqueue(1)
+# prueba1.enqueue(2)
+# prueba1.enqueue(3)
+# prueba1.enqueue(4)
+# prueba1.toString()
+# prueba1.dequeue()
+# prueba1.toString()
 
-print(prueba1.length())
+# print(prueba1.length())
