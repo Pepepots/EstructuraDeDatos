@@ -14,15 +14,15 @@ class Queue:
     def dequeue(self):
         if not self.isEmpty():
             return self.__data.pop(0)
-    
+
     def toString(self):
         for dato in self.__data:
             if dato == self.__data[self.length() - 1]:
                 print(f'| {dato} |')
             else:
-                print(f'| {dato} | <--', end = '')        
+                print(f'| {dato} | <--', end = '')
         # print('')
-    
+
     def getData(self):
         return self.__data
 
