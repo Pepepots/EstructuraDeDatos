@@ -16,3 +16,14 @@ arbol3 = NodoArbolBinario('Santi')
 arbol3.rigth = NodoArbolBinario('Jesus')
 arbol3.rigth.left = NodoArbolBinario('Pedro')
 arbol3.rigth.left.rigth = NodoArbolBinario('Pedro')
+
+print(arbol2.left.left.left.data)
+print('.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.')
+
+currNode = arbol2
+while currNode.left != None:
+    currNode = currNode.left
+print(currNode.data)
+
+print('.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.')
+print(arbol2.left.rigth.data)
